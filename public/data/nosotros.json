@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Valentina Romero",
+    "puesto": "Directora General",
+    "email": "valentina.romero@casacuero.com",
+    "foto": "/images/valentina-romero-directora-general.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Gabriel Suárez",
+    "puesto": "Jefe de Producción",
+    "email": "gabriel.suarez@casacuero.com",
+    "foto": "/images/gabriel-suarez-jefe-produccion.png"
+  },
+  {
+    "id": 3,
+    "nombre": "Camila Ferrero",
+    "puesto": "Diseño y Moldería",
+    "email": "camila.ferrero@casacuero.com",
+    "foto": "/images/camila-ferrero-diseno-molderia.png"
+  },
+  {
+    "id": 4,
+    "nombre": "Lucas Méndez",
+    "puesto": "E-commerce y Ventas",
+    "email": "lucas.mendez@casacuero.com",
+    "foto": "/images/lucas-mendez-ecommerce-ventas.png"
+  }
+]

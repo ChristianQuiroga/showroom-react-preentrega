@@ -1,0 +1,63 @@
+:root {
+  --color-page: #f3eee4;
+  --color-surface: #fffdf8;
+  --color-text: #263438;
+  --color-muted: #647174;
+  --color-border: #ded5c7;
+  --color-brand: #174b52;
+  --color-brand-hover: #21616a;
+  --color-accent: #d17d68;
+  --color-accent-soft: #f2e5dc;
+  --shadow:
+    rgba(23, 75, 82, 0.12) 0 8px 18px -6px, rgba(23, 75, 82, 0.07) 0 3px 8px -3px;
+
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light;
+  color: var(--color-text);
+  background: var(--color-page);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-page);
+  color: var(--color-text);
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: var(--color-page);
+}
+
+main {
+  flex: 1;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}

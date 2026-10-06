@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "nombre": "Conjunto de Cuero Negro Mujer",
+    "precio": 285000,
+    "imagen": "/images/conjunto-cuero-negro-mujer.jpg",
+    "talles": [
+      { "talle": "S", "cantidad": 2 },
+      { "talle": "M", "cantidad": 3 },
+      { "talle": "L", "cantidad": 2 }
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "Campera de Cuero Negra Hombre",
+    "precio": 245000,
+    "imagen": "/images/campera-cuero-hombre-negra.jpg",
+    "talles": [
+      { "talle": "S", "cantidad": 2 },
+      { "talle": "M", "cantidad": 4 },
+      { "talle": "L", "cantidad": 3 },
+      { "talle": "XL", "cantidad": 1 }
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Top de Cuero Marrón con Pantalón Beige",
+    "precio": 198000,
+    "imagen": "/images/top-cuero-marron-pantalon-beige.jpg",
+    "talles": [
+      { "talle": "S", "cantidad": 3 },
+      { "talle": "M", "cantidad": 2 },
+      { "talle": "L", "cantidad": 1 }
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "Conjunto de Cuero Marrón Mujer",
+    "precio": 276000,
+    "imagen": "/images/conjunto-cuero-marron-mujer.jpg",
+    "talles": [
+      { "talle": "S", "cantidad": 1 },
+      { "talle": "M", "cantidad": 2 },
+      { "talle": "L", "cantidad": 2 }
+    ]
+  },
+  {
+    "id": 5,
+    "nombre": "Conjunto de Cuero Marrón Mujer Frente",
+    "precio": 276000,
+    "imagen": "/images/conjunto-cuero-marron-mujer-frente.jpg",
+    "talles": [
+      { "talle": "S", "cantidad": 2 },
+      { "talle": "M", "cantidad": 2 },
+      { "talle": "L", "cantidad": 1 }
+    ]
+  },
+  {
+    "id": 6,
+    "nombre": "Blazer y Pantalón de Cuero Negro",
+    "precio": 289000,
+    "imagen": "/images/blazer-pantalon-cuero-negro-mujer.jpg",
+    "talles": [
+      { "talle": "S", "cantidad": 2 },
+      { "talle": "M", "cantidad": 3 },
+      { "talle": "L", "cantidad": 2 },
+      { "talle": "XL", "cantidad": 1 }
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Top de Cuero Negro con Falda Azul",
+    "precio": 214000,
+    "imagen": "/images/top-cuero-negro-falda-azul.jpg",
+    "talles": [
+      { "talle": "S", "cantidad": 3 },
+      { "talle": "M", "cantidad": 3 },
+      { "talle": "L", "cantidad": 2 }
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Campera Biker de Cuero Negra",
+    "precio": 258000,
+    "imagen": "/images/campera-biker-cuero-negra.webp",
+    "talles": [
+      { "talle": "S", "cantidad": 2 },
+      { "talle": "M", "cantidad": 5 },
+      { "talle": "L", "cantidad": 3 },
+      { "talle": "XL", "cantidad": 2 }
+    ]
+  }
+]

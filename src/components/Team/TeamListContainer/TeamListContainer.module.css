@@ -1,0 +1,12 @@
+/* Voy a usar flex para centrar los productos y padding para distanciarlos */
+/* En /componentes/ItemListContainer/ItemListContainer.module.css*/
+
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}

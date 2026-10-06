@@ -1,0 +1,17 @@
+/*
+.card {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 clamp(12px, 2vw, 24px);
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+*/
