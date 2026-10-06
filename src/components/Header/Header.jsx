@@ -3,7 +3,10 @@ import styles from "./Header.module.css";
 function Header() {
   return (
     <header className={styles.header}>
-      <h1 className={styles.title}>Showroom Casa Cuero</h1>
+      <h1 className={styles.title}>
+        <span className={styles.titleEyebrow}>Showroom</span>
+        <span className={styles.titleBrand}>Casa Cuero</span>
+      </h1>
 
       <nav className={styles.tituloDerecho}>
         <nav className={styles.nav}>

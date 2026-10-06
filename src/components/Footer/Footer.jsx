@@ -10,9 +10,18 @@ function Footer() {
         <h2 id="company-title">Casa Cuero</h2>
         <p>Diseño y confección de prendas de cuero.</p>
         <address>
-          <span>Thames 1450, Palermo, Ciudad Autónoma de Buenos Aires</span>
-          <a href="mailto:hola@casacuero.com">hola@casacuero.com</a>
-          <a href="tel:+541147821450">+54 11 4782-1450</a>
+          <p>
+            <span>Visítanos</span>
+            Thames 1450, Palermo, Ciudad Autónoma de Buenos Aires
+          </p>
+          <p>
+            <span>Escríbenos</span>
+            <a href="mailto:hola@casacuero.com">hola@casacuero.com</a>
+          </p>
+          <p>
+            <span>Llámanos</span>
+            <a href="tel:+541147821450">+54 11 4782-1450</a>
+          </p>
         </address>
         <p className={style.text}>
           &copy; 2026 Casa Cuero. Derechos reservados.

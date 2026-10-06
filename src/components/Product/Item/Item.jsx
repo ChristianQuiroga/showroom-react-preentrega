@@ -60,7 +60,11 @@ function Item({
         </span>
       </div>
 
-      <p>Precio: ${precio}</p>
+      <p>Precio: $
+        {Number(precio).toLocaleString("es-AR",{
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        })}</p>
 
       <div className={styles.talles}>
         {talles.map((item) => (

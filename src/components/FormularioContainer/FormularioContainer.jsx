@@ -35,9 +35,35 @@ export function FormularioContainer() {
 */
   const manejarEnvio = async (evento) => {
     evento.preventDefault();
+
+    // Validamos los datos del formulario antes de enviarlos
+    const nombre = datosForm.nombre.trim();
+    const precio = parseFloat(datosForm.precio);
+    const stock = parseInt(datosForm.stock);
+
+    if (nombre.length < 3) {
+      alert("El nombre debe tener al menos 3 caracteres.");
+      return;
+    }
+
+    if (!Number.isFinite(precio) || precio <= 0) {
+      alert("Ingresá un precio válido mayor a 0.");
+      return;
+    }
+
+    if (!Number.isInteger(stock) || stock < 0) {
+      alert("El stock debe ser un número entero igual o mayor a 0.");
+      return;
+    }
+
     // Validamos que el usuario haya seleccionado un archivo de imagen
     if (!imagenFile) {
       alert("Por favor, selecciona un archivo de imagen.");
+      return;
+    }
+
+    if (!imagenFile.type.startsWith("image/")) {
+      alert("El archivo seleccionado debe ser una imagen.");
       return;
     }
 
@@ -68,6 +94,9 @@ export function FormularioContainer() {
         // Unimos la URL de la imagen con el resto de los datos del formulario
         const productoCompleto = {
           ...datosForm,
+          nombre: datosForm.nombre.trim(),
+          precio: Number(datosForm.precio),
+          stock: Number(datosForm.stock),
           urlImagen: urlImagen,
         };
 

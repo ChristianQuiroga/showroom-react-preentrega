@@ -1,15 +1,16 @@
 :root {
-  --color-page: #f3eee4;
-  --color-surface: #fffdf8;
-  --color-text: #263438;
-  --color-muted: #647174;
-  --color-border: #ded5c7;
-  --color-brand: #174b52;
-  --color-brand-hover: #21616a;
-  --color-accent: #d17d68;
-  --color-accent-soft: #f2e5dc;
+  --color-page: #f4f5f2;
+  --color-surface: #fffefa;
+  --color-text: #25333c;
+  --color-muted: #647079;
+  --color-border: #d8ddd9;
+  --color-brand: #4a1725;
+  --color-brand-hover: #682437;
+  --color-brand-deep: #35111d;
+  --color-accent: #b9864d;
+  --color-accent-soft: #f2eadc;
   --shadow:
-    rgba(23, 75, 82, 0.12) 0 8px 18px -6px, rgba(23, 75, 82, 0.07) 0 3px 8px -3px;
+    rgba(32, 55, 67, 0.12) 0 8px 18px -6px, rgba(32, 55, 67, 0.07) 0 3px 8px -3px;
 
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
   --heading: "Palatino Linotype", "Book Antiqua", Georgia, serif;
