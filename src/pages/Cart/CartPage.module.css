@@ -1,0 +1,165 @@
+/* Contenedor principal del carrito */
+.cartContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cartItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+
+  background-color: #1c252b;
+  color: #ffffff;
+  border: 1px solid #4a6065;
+  border-radius: 12px;
+
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.cartItem h4 {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.cartItem p {
+  margin: 0;
+}
+
+.productImage {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  border-radius: 8px;
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.productActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.productActions strong {
+  font-size: 1.25rem;
+}
+
+.quantityControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.quantityButton {
+  background-color: #196b67;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.85rem;
+  cursor: pointer;
+}
+
+.quantityButton:hover:not(:disabled) {
+  background-color: #21847e;
+}
+
+.quantityButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.quantityValue {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Botón eliminar */
+.removeButton {
+  background-color: #a83232;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.removeButton:hover {
+  background-color: #c53b3b;
+}
+
+/* Resumen de compra */
+.cartSummary {
+  background-color: #1c252b;
+  color: #ffffff;
+  border: 1px solid #4a6065;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.cartSummary h3 {
+  margin-bottom: 1.25rem;
+}
+
+.clearButton {
+  background-color: #196b67;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+}
+
+.clearButton:hover {
+  background-color: #21847e;
+}
+
+/* Diseño responsive para celulares */
+@media (max-width: 600px) {
+  .cartContainer {
+    padding: 1rem;
+  }
+
+  .cartItem {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .productInfo {
+    align-items: center;
+  }
+
+  .productActions {
+    align-items: center;
+  }
+
+  .cartSummary {
+    padding: 1rem;
+  }
+}

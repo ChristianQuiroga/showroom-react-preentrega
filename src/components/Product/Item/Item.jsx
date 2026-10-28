@@ -1,8 +1,11 @@
 //  import ProductCard from "../ProducCard/ProductCard";
 import { useState } from "react";
 import styles from "./Item.module.css";
+import { Link } from "react-router-dom";
+import { useCart } from "../../../context/useCart";
 
 function Item({
+  id,
   nombre,
   precio,
   imagen,
@@ -13,6 +16,7 @@ function Item({
 }) {
   const [cantidad, setCantidad] = useState(0);
   const [esFavorito, setEsFavorito] = useState(false);
+  const { addToCart } = useCart();
 
   const incrementar = () => {
     if (talleSeleccionado && cantidad < stockTalle) {
@@ -39,9 +43,18 @@ function Item({
       return;
     }
 
-    alert(
-      `Agregaste ${cantidad} unidades de ${nombre}, talle ${talleSeleccionado} al carrito`,
+    const resultado = addToCart(
+      { id, nombre, precio, imagen, stock: stockTalle },
+      talleSeleccionado,
+      cantidad,
+      stockTalle,
     );
+
+    if (resultado.ok) {
+      setCantidad(0);
+    }
+
+    alert(resultado.mensaje);
   };
 
   const marcarComoFavorito = () => {
@@ -50,8 +63,9 @@ function Item({
 
   return (
     <div className={styles.card}>
-      <img src={imagen} className={styles.imagen} alt={nombre} />
-
+      <Link to={`/producto/${id}`}>
+        <img src={imagen} className={styles.imagen} alt={nombre} />
+      </Link>
       <div className={styles.cardTitle}>
         <h3>{nombre}</h3>
 
@@ -60,11 +74,13 @@ function Item({
         </span>
       </div>
 
-      <p>Precio: $
-        {Number(precio).toLocaleString("es-AR",{
+      <p>
+        Precio: $
+        {Number(precio).toLocaleString("es-AR", {
           minimumFractionDigits: 2,
-          maximumFractionDigits: 2
-        })}</p>
+          maximumFractionDigits: 2,
+        })}
+      </p>
 
       <div className={styles.talles}>
         {talles.map((item) => (
@@ -89,6 +105,9 @@ function Item({
 
       {/* <p>Stock: {stockTalle}</p> */}
       <p>Stock: {stockTalle !== null ? stockTalle : "Seleccione un talle"}</p>
+      <Link to={`/producto/${id}`} className={styles.detalleLink}>
+        Ver Detalle
+      </Link>
 
       <div className={styles.contador}>
         <button
@@ -108,7 +127,18 @@ function Item({
         </button>
       </div>
 
-      <button onClick={agregarAlCarrito}>Agregar al Carrito</button>
+      {talleSeleccionado && cantidad === 0 && (
+        <p className={styles.validationMessage}>
+          Seleccioná una cantidad para agregar al carrito.
+        </p>
+      )}
+
+      <button
+        onClick={agregarAlCarrito}
+        disabled={!talleSeleccionado || cantidad === 0}
+      >
+        Agregar al Carrito
+      </button>
     </div>
   );
 }

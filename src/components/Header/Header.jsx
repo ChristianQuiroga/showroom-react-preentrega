@@ -1,6 +1,12 @@
+import { useCart } from "../../context/useCart";
 import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 function Header() {
+  // Usamos el hook para acceder a la función.
+  const { getCartQuantity } = useCart();
+  const totalItems = getCartQuantity();
+
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>
@@ -8,25 +14,31 @@ function Header() {
         <span className={styles.titleBrand}>Casa Cuero</span>
       </h1>
 
-      <nav className={styles.tituloDerecho}>
-        <nav className={styles.nav}>
-          <a className={styles.link} href="#">
+      <div className={styles.tituloDerecho}>
+        <nav className={styles.nav} aria-label="Navegación principal">
+          <Link className={styles.link} to="/">
             Inicio
-          </a>
+          </Link>
 
-          <a className={styles.link} href="#">
+          <Link className={styles.link} to="/productos">
             Productos
-          </a>
+          </Link>
 
-          <a className={styles.link} href="#">
+          <Link className={styles.link} to="/alta">
+            Alta
+          </Link>
+
+          <Link className={styles.link} to="/nosotros">
             Nosotros
-          </a>
+          </Link>
 
-          <a className={styles.link} href="#">
+          <Link className={styles.link} to="/contacto">
             Contacto
-          </a>
+          </Link>
 
-          <a className={styles.link} href="#" aria-label="Carrito">
+          <Link className={styles.link} to="/carrito" aria-label="Carrito">
+            {totalItems > 0 && <span>{totalItems}</span>}
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -45,9 +57,9 @@ function Header() {
               <circle cx="9" cy="21" r="1" />
               <circle cx="19" cy="21" r="1" />
             </svg>
-          </a>
+          </Link>
         </nav>
-      </nav>
+      </div>
     </header>
   );
 }

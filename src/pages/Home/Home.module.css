@@ -1,0 +1,79 @@
+
+.home {
+  width: 100%;
+}
+
+.hero {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.eyebrow {
+  color: #a67b36;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.hero h1 {
+  margin: 1rem 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+  color: #20303b;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #52616b;
+}
+
+.catalogButton {
+  display: inline-block;
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.8rem;
+  background-color: #4c182b;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.catalogButton:hover {
+  background-color: #68283e;
+}
+
+.destacados {
+  padding: 1rem 1rem 2rem;
+  text-align: center;
+}
+
+.destacados h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  color: #20303b;
+}
+
+.viewAll {
+  display: inline-block;
+  margin-top: 2rem;
+  color: #612337;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
