@@ -1,0 +1,155 @@
+.productDetail {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: #612337;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  align-items: start;
+}
+
+.imageContainer {
+  background: #f7f4f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.productImage {
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.productInfo h1 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.productInfo h3 {
+  margin: 0;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #612337;
+  margin: 0;
+}
+
+.featured {
+  background: #612337;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.sizes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.size {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d4ccc5;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 76px;
+  cursor: pointer;
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.size small {
+  color: #666;
+  font-size: 0.75rem;
+}
+
+.size:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.selectedSize {
+  border-color: #612337;
+  background-color: #f1e5e8;
+  box-shadow: 0 0 0 1px #612337;
+}
+
+.description {
+  border-top: 1px solid #ddd;
+  padding-top: 1.5rem;
+  width: 100%;
+}
+
+.description p {
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .productDetail {
+    padding: 1.5rem 1rem;
+  }
+
+  .productLayout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .productImage {
+    max-height: 420px;
+  }
+}
+
+.addToCartButton {
+  background-color: #612337;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.9rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.addToCartButton:hover:not(:disabled) {
+  background-color: #451525;
+}
+
+.addToCartButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,11 +1,8 @@
 import style from "./Footer.module.css";
-import TeamListContainer from "../Team/TeamListContainer/TeamListContainer";
 
 function Footer() {
   return (
     <footer className={style.footer}>
-      <TeamListContainer />
-
       <section className={style.company} aria-labelledby="company-title">
         <h2 id="company-title">Casa Cuero</h2>
         <p>Diseño y confección de prendas de cuero.</p>
