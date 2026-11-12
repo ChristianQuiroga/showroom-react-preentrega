@@ -3,6 +3,9 @@ import TeamList from "../TeamList/TeamList";
 
 import styles from "./TeamListContainer.module.css";
 
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../../firebase/config";
+
 function TeamListContainer() {
   const [team, setTeam] = useState([]);
   const [error, setError] = useState(null);
@@ -11,19 +14,13 @@ function TeamListContainer() {
   useEffect(() => {
     const cargarTeam = async () => {
       try {
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        const resp = await fetch("/data/nosotros.json");
+        const equipoRef = collection(db, "equipo");
+        const snapshot = await getDocs(equipoRef);
+        const datos = snapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: Number(doc.id),
+        }));
 
-        if (!resp.ok) {
-          throw new Error("No se puede cargar la lista de Equipo");
-        }
-        const tipoContenido = resp.headers.get("content-type");
-
-        if (!tipoContenido?.includes("application/json")) {
-          throw new Error("La respuesta recibida no es un archivo JSON válida");
-        }
-
-        const datos = await resp.json();
         setTeam(datos);
       } catch (error) {
         setError(error.message);
@@ -39,7 +36,7 @@ function TeamListContainer() {
     return <p>Cargando Equipo, por favor espere...</p>;
   }
   if (error) {
-    return <p>Error: </p>;
+    return <p>Error al cargar el equipo: {error}</p>;
   }
 
   return (

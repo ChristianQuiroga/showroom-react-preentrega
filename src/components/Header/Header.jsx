@@ -32,6 +32,10 @@ function Header() {
             Nosotros
           </Link>
 
+          <Link className={styles.link} to="/admin/cupones">
+            Cupones
+          </Link>
+
           <Link className={styles.link} to="/contacto">
             Contacto
           </Link>

@@ -1,46 +1,104 @@
 // En src/contenedores/FormularioContainer/FormularioContainer.jsx
 import { useState } from "react";
 import { FormularioProducto } from "../FormularioProducto/FormularioProducto";
+import { convertirPrecio } from "../../utils/convertirPrecio";
+import { subirImagen } from "../../services/imageService";
+import { crearProductoConsecutivo } from "../../services/productService";
 
+// Función para crear un producto en Firestore
 export function FormularioContainer() {
   const [datosForm, setDatosForm] = useState({
     nombre: "",
     precio: "",
-    stock: "",
+    categoria: "",
+    descripcion: "",
+    destacado: false,
+    talles: [
+      { talle: "S", cantidad: 0 },
+      { talle: "M", cantidad: 0 },
+      { talle: "L", cantidad: 0 },
+      { talle: "XL", cantidad: 0 },
+    ],
     //urlImagen: "",
   });
+
   // 1. Nuevo estado para el archivo de imagen
   const [imagenFile, setImagenFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [imagenKey, setImagenKey] = useState(0);
 
   // Manejar cambios en los inputs del formulario
   const manejarCambio = (evento) => {
-    const { name, value } = evento.target;
-    setDatosForm({
-      ...datosForm,
-      [name]: value,
-    });
+    const { name, value, type, checked } = evento.target;
+    setDatosForm((anteriores) => ({
+      ...anteriores,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
+
+  // Actualizar la cantidad de talles en el estado del formulario
+  const manejarCambioTalle = (talle, valor) => {
+    setDatosForm((anteriores) => ({
+      ...anteriores,
+      talles: anteriores.talles.map((item) =>
+        item.talle === talle ? { ...item, cantidad: valor } : item,
+      ),
+    }));
+  };
+
+  const stockTotal = datosForm.talles.reduce(
+    (total, item) => total + Number(item.cantidad),
+    0,
+  );
+
+  // Función para manejar el evento onBlur del input de precio
+  const manejarBlurPrecio = () => {
+    if (datosForm.precio.trim() === "") return;
+
+    const precio = convertirPrecio(datosForm.precio);
+
+    if (!Number.isFinite(precio) || precio < 0) return;
+
+    const precioFormateado = precio.toLocaleString("es-AR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
+    setDatosForm((anteriores) => ({
+      ...anteriores,
+      precio: precioFormateado,
+    }));
+  };
+
   // 2. Nueva función para manejar el cambio del input de archivo "file"
   const manejarCambioImagen = (evento) => {
     const file = evento.target.files[0];
     setImagenFile(file);
   };
-  /*
+
   // Enviar los datos del formulario a la API
-  const manejarEnvio = (evento) => {
-    evento.preventDefault();
-    console.log("Enviando los siguientes datos a la API:", datosForm);
-  };
-*/
   const manejarEnvio = async (evento) => {
     evento.preventDefault();
 
     // Validamos los datos del formulario antes de enviarlos
     const nombre = datosForm.nombre.trim();
-    const precio = parseFloat(datosForm.precio);
-    const stock = parseInt(datosForm.stock);
+    const precio = convertirPrecio(datosForm.precio);
 
+    // Validamos que todas las cantidades de talles sean números enteros iguales o mayores a cero
+    const tallesValidos = datosForm.talles.every((item) => {
+      const cantidad = Number(item.cantidad);
+
+      return (
+        item.cantidad !== "" && Number.isSafeInteger(cantidad) && cantidad >= 0
+      );
+    });
+
+    if (!tallesValidos) {
+      alert("Ingresá cantidades enteras, iguales o mayores a cero.");
+      return;
+    }
+
+    // Validaciones
     if (nombre.length < 3) {
       alert("El nombre debe tener al menos 3 caracteres.");
       return;
@@ -48,11 +106,6 @@ export function FormularioContainer() {
 
     if (!Number.isFinite(precio) || precio <= 0) {
       alert("Ingresá un precio válido mayor a 0.");
-      return;
-    }
-
-    if (!Number.isInteger(stock) || stock < 0) {
-      alert("El stock debe ser un número entero igual o mayor a 0.");
       return;
     }
 
@@ -68,54 +121,49 @@ export function FormularioContainer() {
     }
 
     setLoading(true); // Iniciamos el estado de carga
-    //await new Promise((resolve) => setTimeout(resolve, 3000)); // Simulamos un retraso de 3 segundos
-
-    // Lógica para subir la imagen a un servicio de almacenamiento (por ejemplo, Cloudinary, Imgbb, etc.) y obtener la URL de la imagen)
-    //const apiKey = process.env.API_KEY; // Asegúrate de tener la variable de entorno configurada
-    const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
-    const formData = new FormData();
-    formData.append("image", imagenFile);
+    //await new Promise((resolve) => setTimeout(resolve, 3000)); //
 
     try {
-      console.log("Subiendo imagen a Imgbb...");
-      const respuestaImgbb = await fetch(
-        `https://api.imgbb.com/1/upload?key=${apiKey}`,
-        {
-          method: "POST",
-          body: formData,
-        },
-      );
+      const urlImagen = await subirImagen(imagenFile);
 
-      const datosImgbb = await respuestaImgbb.json();
-      if (datosImgbb.success) {
-        const urlImagen = datosImgbb.data.url;
-        console.log("Imagen subida con éxito. URL:", urlImagen);
+      const productoCompleto = {
+        nombre,
+        precio,
+        categoria: datosForm.categoria.trim(),
+        descripcion: datosForm.descripcion.trim(),
+        destacado: datosForm.destacado,
+        imagen: urlImagen,
+        talles: datosForm.talles.map((item) => ({
+          talle: item.talle,
+          cantidad: Number(item.cantidad),
+        })),
+      };
 
-        // Unimos la URL de la imagen con el resto de los datos del formulario
-        const productoCompleto = {
-          ...datosForm,
-          nombre: datosForm.nombre.trim(),
-          precio: Number(datosForm.precio),
-          stock: Number(datosForm.stock),
-          urlImagen: urlImagen,
-        };
+      const nuevoId = await crearProductoConsecutivo(productoCompleto);
 
-        console.log(
-          "Enviando los siguientes datos Completos a la API:",
-          productoCompleto,
-        );
-      } else {
-        throw new Error(
-          "La subida de la imagen a Imgbb falló: " + datosImgbb.error.message,
-        );
-      }
+      console.log("Producto creado correctamente. ID:", nuevoId);
+      alert(`Producto creado correctamente con ID: ${nuevoId}`);
+      setDatosForm({
+        nombre: "",
+        precio: "",
+        categoria: "",
+        descripcion: "",
+        destacado: false,
+        talles: [
+          { talle: "S", cantidad: 0 },
+          { talle: "M", cantidad: 0 },
+          { talle: "L", cantidad: 0 },
+          { talle: "XL", cantidad: 0 },
+        ],
+      });
+
+      setImagenFile(null);
+      setImagenKey((anterior) => anterior + 1);
     } catch (error) {
-      console.error("Error en el proceso de envío:", error);
-      alert(
-        "Hubo un error al enviar los datos. Por favor, inténtalo de nuevo.",
-      );
+      console.error("Error al preparar el producto:", error);
+      alert(error.message);
     } finally {
-      setLoading(false); // Finalizamos el estado de carga
+      setLoading(false);
     }
   };
 
@@ -123,9 +171,13 @@ export function FormularioContainer() {
     <FormularioProducto
       datosForm={datosForm}
       manejarCambio={manejarCambio}
+      manejarCambioTalle={manejarCambioTalle}
       manejarEnvio={manejarEnvio}
       manejarCambioImagen={manejarCambioImagen}
       loading={loading}
+      stockTotal={stockTotal}
+      manejarBlurPrecio={manejarBlurPrecio}
+      imagenKey={imagenKey}
     />
   );
 }

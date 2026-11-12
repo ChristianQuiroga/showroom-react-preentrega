@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./Item.module.css";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../context/useCart";
+import { formatearPrecio } from "../../../utils/formatearPrecio";
 
 function Item({
   id,
@@ -74,13 +75,15 @@ function Item({
         </span>
       </div>
 
-      <p>
+      {/*      <p>
         Precio: $
         {Number(precio).toLocaleString("es-AR", {
           minimumFractionDigits: 2,
           maximumFractionDigits: 2,
         })}
       </p>
+*/}
+      <p> Precio: {formatearPrecio(precio)}</p>
 
       <div className={styles.talles}>
         {talles.map((item) => (

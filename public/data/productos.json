@@ -5,12 +5,22 @@
     "precio": 285000,
     "imagen": "/images/conjunto-cuero-negro-mujer.jpg",
     "talles": [
-      { "talle": "S", "cantidad": 2 },
-      { "talle": "M", "cantidad": 3 },
-      { "talle": "L", "cantidad": 2 }
+      {
+        "talle": "S",
+        "cantidad": 2
+      },
+      {
+        "talle": "M",
+        "cantidad": 3
+      },
+      {
+        "talle": "L",
+        "cantidad": 2
+      }
     ],
     "destacado": true,
-    "descripcion": "Un conjunto de cuero negro para mujer, de estilo elegante y moderno, ideal para crear un look coordinado y versátil."
+    "descripcion": "Un conjunto de cuero negro para mujer, de estilo elegante y moderno, ideal para crear un look coordinado y versátil.",
+    "categoria": "Conjuntos"
   },
   {
     "id": 2,
@@ -18,13 +28,26 @@
     "precio": 245000,
     "imagen": "/images/campera-cuero-hombre-negra.jpg",
     "talles": [
-      { "talle": "S", "cantidad": 2 },
-      { "talle": "M", "cantidad": 4 },
-      { "talle": "L", "cantidad": 3 },
-      { "talle": "XL", "cantidad": 1 }
+      {
+        "talle": "S",
+        "cantidad": 2
+      },
+      {
+        "talle": "M",
+        "cantidad": 4
+      },
+      {
+        "talle": "L",
+        "cantidad": 3
+      },
+      {
+        "talle": "XL",
+        "cantidad": 1
+      }
     ],
     "destacado": false,
-    "descripcion": "Campera de cuero negra para hombre, con un diseño clásico que aporta abrigo y un estilo atemporal para distintas ocasiones."
+    "descripcion": "Campera de cuero negra para hombre, con un diseño clásico que aporta abrigo y un estilo atemporal para distintas ocasiones.",
+    "categoria": "Camperas"
   },
   {
     "id": 3,
@@ -32,12 +55,22 @@
     "precio": 198000,
     "imagen": "/images/top-cuero-marron-pantalon-beige.jpg",
     "talles": [
-      { "talle": "S", "cantidad": 3 },
-      { "talle": "M", "cantidad": 2 },
-      { "talle": "L", "cantidad": 1 }
+      {
+        "talle": "S",
+        "cantidad": 3
+      },
+      {
+        "talle": "M",
+        "cantidad": 2
+      },
+      {
+        "talle": "L",
+        "cantidad": 1
+      }
     ],
     "destacado": true,
-    "descripcion": "Top de cuero marrón combinado con pantalón beige, una propuesta de tonos cálidos que equilibra textura y comodidad."
+    "descripcion": "Top de cuero marrón combinado con pantalón beige, una propuesta de tonos cálidos que equilibra textura y comodidad.",
+    "categoria": "Tops"
   },
   {
     "id": 4,
@@ -45,12 +78,22 @@
     "precio": 276000,
     "imagen": "/images/conjunto-cuero-marron-mujer.jpg",
     "talles": [
-      { "talle": "S", "cantidad": 1 },
-      { "talle": "M", "cantidad": 2 },
-      { "talle": "L", "cantidad": 2 }
+      {
+        "talle": "S",
+        "cantidad": 1
+      },
+      {
+        "talle": "M",
+        "cantidad": 2
+      },
+      {
+        "talle": "L",
+        "cantidad": 2
+      }
     ],
     "destacado": false,
-    "descripcion": "Conjunto de cuero marrón para mujer, pensado para lucir un estilo uniforme, sofisticado y fácil de combinar."
+    "descripcion": "Conjunto de cuero marrón para mujer, pensado para lucir un estilo uniforme, sofisticado y fácil de combinar.",
+    "categoria": "Conjuntos"
   },
   {
     "id": 5,
@@ -58,12 +101,22 @@
     "precio": 276000,
     "imagen": "/images/conjunto-cuero-marron-mujer-frente.jpg",
     "talles": [
-      { "talle": "S", "cantidad": 2 },
-      { "talle": "M", "cantidad": 2 },
-      { "talle": "L", "cantidad": 1 }
+      {
+        "talle": "S",
+        "cantidad": 2
+      },
+      {
+        "talle": "M",
+        "cantidad": 2
+      },
+      {
+        "talle": "L",
+        "cantidad": 1
+      }
     ],
     "destacado": true,
-    "descripcion": "Conjunto de cuero marrón para mujer, fotografiado de frente para apreciar mejor sus detalles y el calce de sus prendas."
+    "descripcion": "Conjunto de cuero marrón para mujer, fotografiado de frente para apreciar mejor sus detalles y el calce de sus prendas.",
+    "categoria": "Conjuntos"
   },
   {
     "id": 6,
@@ -71,13 +124,26 @@
     "precio": 289000,
     "imagen": "/images/blazer-pantalon-cuero-negro-mujer.jpg",
     "talles": [
-      { "talle": "S", "cantidad": 2 },
-      { "talle": "M", "cantidad": 3 },
-      { "talle": "L", "cantidad": 2 },
-      { "talle": "XL", "cantidad": 1 }
+      {
+        "talle": "S",
+        "cantidad": 2
+      },
+      {
+        "talle": "M",
+        "cantidad": 3
+      },
+      {
+        "talle": "L",
+        "cantidad": 2
+      },
+      {
+        "talle": "XL",
+        "cantidad": 1
+      }
     ],
     "destacado": false,
-    "descripcion": "Blazer y pantalón de cuero negro que forman un conjunto de líneas elegantes, ideal para un look audaz y refinado."
+    "descripcion": "Blazer y pantalón de cuero negro que forman un conjunto de líneas elegantes, ideal para un look audaz y refinado.",
+    "categoria": "Conjuntos"
   },
   {
     "id": 7,
@@ -85,12 +151,22 @@
     "precio": 214000,
     "imagen": "/images/top-cuero-negro-falda-azul.jpg",
     "talles": [
-      { "talle": "S", "cantidad": 3 },
-      { "talle": "M", "cantidad": 3 },
-      { "talle": "L", "cantidad": 2 }
+      {
+        "talle": "S",
+        "cantidad": 3
+      },
+      {
+        "talle": "M",
+        "cantidad": 3
+      },
+      {
+        "talle": "L",
+        "cantidad": 2
+      }
     ],
     "destacado": false,
-    "descripcion": "Top de cuero negro combinado con falda azul, una mezcla de colores y texturas que crea un conjunto moderno y original."
+    "descripcion": "Top de cuero negro combinado con falda azul, una mezcla de colores y texturas que crea un conjunto moderno y original.",
+    "categoria": "Tops"
   },
   {
     "id": 8,
@@ -98,12 +174,25 @@
     "precio": 258000,
     "imagen": "/images/campera-biker-cuero-negra.webp",
     "talles": [
-      { "talle": "S", "cantidad": 2 },
-      { "talle": "M", "cantidad": 5 },
-      { "talle": "L", "cantidad": 3 },
-      { "talle": "XL", "cantidad": 2 }
+      {
+        "talle": "S",
+        "cantidad": 2
+      },
+      {
+        "talle": "M",
+        "cantidad": 5
+      },
+      {
+        "talle": "L",
+        "cantidad": 3
+      },
+      {
+        "talle": "XL",
+        "cantidad": 2
+      }
     ],
     "destacado": true,
-    "descripcion": "Campera biker de cuero negra con inspiración motociclista, perfecta para sumar un toque urbano y distintivo al vestuario."
+    "descripcion": "Campera biker de cuero negra con inspiración motociclista, perfecta para sumar un toque urbano y distintivo al vestuario.",
+    "categoria": "Camperas"
   }
 ]

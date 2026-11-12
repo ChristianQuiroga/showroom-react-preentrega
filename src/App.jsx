@@ -9,6 +9,8 @@ import CartPage from "./pages/Cart/CartPage";
 
 import Home from "./pages/Home/Home";
 
+import { CouponManagement } from "./components/CouponManagement/CouponManagement";
+
 function App() {
   return (
     /*<Layout>
@@ -31,6 +33,8 @@ function App() {
           path="/nosotros"
           element={<TeamListContainer Mensaje="Nuestro equipo" />}
         />
+
+        <Route path="/admin/cupones" element={<CouponManagement/>} />
 
         <Route path="/contacto" element={<h1>Contacto</h1>} />
 

@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { formatearPrecio } from "../../../utils/formatearPrecio";
 import { useCart } from "../../../context/useCart";
 
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../../firebase/config";
+
 function ProductDetail() {
   const { id } = useParams();
-
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -22,20 +24,22 @@ function ProductDetail() {
       setCargando(true);
       setError(null);
       setProducto(null);
+      setTalleSeleccionado(null);
+      setCantidad(1);
 
       try {
-        const response = await fetch("/data/productos.json");
-
-        if (!response.ok) {
-          throw new Error("No se pudo cargar la información del producto");
-        }
-
-        const data = await response.json();
-
-        const encontrado = data.find((item) => item.id === Number(id));
+        const docRef = doc(db, "productos", String(id));
+        const docSnap = await getDoc(docRef);
 
         if (activo) {
-          setProducto(encontrado ?? null);
+          if (docSnap.exists()) {
+            setProducto({
+              ...docSnap.data(),
+              id: Number(docSnap.id),
+            });
+          } else {
+            setProducto(null);
+          }
         }
       } catch (error) {
         if (activo) {
@@ -81,6 +85,7 @@ function ProductDetail() {
       {
         id: producto.id,
         nombre: producto.nombre,
+        categoria: producto.categoria,
         precio: producto.precio,
         imagen: producto.imagen,
         stock: stockTalle,
@@ -111,6 +116,10 @@ function ProductDetail() {
         <div className={styles.productInfo}>
           {producto.destacado && (
             <span className={styles.featured}>Destacado</span>
+          )}
+
+          {producto.categoria && (
+            <p className={styles.featured}>Categoría: {producto.categoria}</p>
           )}
 
           <h1>{producto.nombre}</h1>

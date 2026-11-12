@@ -2,6 +2,9 @@ import ItemList from "../ItemList/ItemList";
 import styles from "./ItemListContainer.module.css";
 import { useState, useEffect } from "react";
 
+import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
+import { db } from "../../../firebase/config";
+
 function ItemListContainerProductos({ mensaje, soloDestacados = false }) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
@@ -10,13 +13,15 @@ function ItemListContainerProductos({ mensaje, soloDestacados = false }) {
   useEffect(() => {
     const cargarProductos = async () => {
       try {
-        const respuesta = await fetch("/data/productos.json");
+        const productosRef = collection(db, "productos");
 
-        if (!respuesta.ok) {
-          throw new Error("No se pude cargar la información de los productos");
-        }
+        const respuesta = await getDocs(productosRef);
 
-        const datos = await respuesta.json();
+        const datos = respuesta.docs.map((documento) => ({
+          ...documento.data(),
+          id: Number(documento.id),
+        }));
+
         setProductos(datos);
       } catch (error) {
         setError(error.message);
