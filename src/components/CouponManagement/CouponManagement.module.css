@@ -165,14 +165,9 @@
   font-size: 0.95rem;
 }
 
-.couponDetails span,
-.exampleNote {
+.couponDetails span {
   color: var(--color-muted);
   font-size: 0.85rem;
-}
-
-.exampleNote {
-  margin: 0.85rem 0 0;
 }
 
 .deleteButton {

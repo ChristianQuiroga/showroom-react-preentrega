@@ -210,15 +210,3 @@
   }
 }
 
-.precioPreview {
-  margin: 6px 0 0;
-  padding: 10px 12px;
-  background: #f5f0eb;
-  border-radius: 6px;
-  color: #612337;
-  font-size: 0.9rem;
-}
-
-.precioPreview strong {
-  font-weight: 700;
-}

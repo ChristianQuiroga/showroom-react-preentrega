@@ -9,11 +9,3 @@ Requerido por el profesor. */
   gap: 1.25rem;
   justify-content: center;
 }
-
-
-
-@media (max-width: 600px) {
-  .title {
-    font-size: 1.8rem;
-  }
-}
